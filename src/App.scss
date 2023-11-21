@@ -5,3 +5,18 @@
   text-align: center;
 }
 
+.form-control{
+  position: relative;
+  width: 250px;
+  margin: 0 auto;
+  z-index: 1;
+  .error{
+    color: red;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+}
