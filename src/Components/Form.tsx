@@ -31,12 +31,7 @@ export const Form = () => {
         <Stack spacing={2}>
         <TextField error={!!errors.username} helperText={errors.username?.message} {...register("username", {required: "username is required"})} sx={{marginBottom:'10px'}} type='text' label='username' id='username' name='username' />
         <TextField error={!!errors.password} helperText={errors.password?.message} {...register("password", {required: "password is required"})} sx={{marginBottom:'10px'}} type='password' label='password' id='password' name='password'  />
-        <TextField {...register("type") } select sx={{width:210}} id='type' name='type' label='tipo'  >
-            <MenuItem key={1} value={1}>uno</MenuItem>
-            <MenuItem key={2} value={2}>due</MenuItem>
-            <MenuItem key={3} value={3}>tre</MenuItem>
-        </TextField>
-
+        
         <Button type='submit' sx={{marginTop:'20px', }} color='warning' variant='contained'>submit</Button>
         
         </Stack >
