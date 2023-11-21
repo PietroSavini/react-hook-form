@@ -1,6 +1,7 @@
 import './App.scss'
 import { Form } from './Components/Form'
 
+
 function App() {
   
 
@@ -9,7 +10,7 @@ function App() {
       <main>
         <h2>React Hook Form</h2>
 
-        <Form />
+        <Form  />
       </main>
       
     </>
