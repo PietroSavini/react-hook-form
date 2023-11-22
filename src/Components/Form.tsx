@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 type Validation = {
     [key:string]: string
 };
-
 type InputItem={
     type: string;
     label: string;
@@ -23,7 +22,6 @@ type RequestValues = {
 type data = {
     [key:string]:any
 }
-
 type Props = {
     inputArr: InputItem[];
     requestValues: RequestValues
