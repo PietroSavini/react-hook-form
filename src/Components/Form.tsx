@@ -1,8 +1,8 @@
 import { TextField, Button, Stack } from '@mui/material'
-import { FieldErrors, useForm  } from 'react-hook-form'
+import { FieldErrors, SubmitHandler, useForm  } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools';
 import { useEffect } from 'react';
-import { loginForm } from '../loginForm';
+
 
 type Validation = {
     [key:string]: string
@@ -16,60 +16,66 @@ type InputItem={
     className: string;
     validations: Validation[];
 }
+type RequestValues = {
+    url: string;
+    method:string;
+}
+type data = {
+    [key:string]:any
+}
 
-export const Form = (loginForm: InputItem[]) => {
+type Props = {
+    inputArr: InputItem[];
+    requestValues: RequestValues
+}
 
-    type data = {
-        username: string;
-        password: string;
-    }
+export const Form = ({inputArr, requestValues}:Props) => {
 
+    const arrayOfInputs = [...inputArr]
+    const values = requestValues;
     const form = useForm<data>();
     const { register, control, handleSubmit, formState, reset } = form;
     const { errors, isSubmitSuccessful } = formState;
 
     const onSubmit = (data: data) =>{
-        console.log('form submitted',data);
+        const HTTPparams = values;
+        console.log('faccio chiamata: ', HTTPparams );
+        console.log('con payload: ', data)
     }
 
-    const onError = (errors: FieldErrors<any>) => {
+
+    const onError = (errors: FieldErrors<data>) => {
         console.log("errori: ",errors)
+
     }
-    //reset del form una volta che isSubmitSuccessful cambia il valore da false a true
+
+    //reset del form al completamento del submit
     useEffect(()=>{
         reset()
     },[isSubmitSuccessful])
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+
         <Stack spacing={2}>
 
-            <TextField 
-                sx={{marginBottom:'10px'}} 
-                error={!!errors.username} 
-                helperText={errors.username?.message} 
-                {...register("username", {required: "username is required"})} 
-                type='text' 
-                label='username' 
-                id='username' 
-                name='username' 
-            />
-            
-            <TextField 
-                sx={{marginBottom:'10px'}} 
-                error={!!errors.password} 
-                helperText={errors.password?.message} 
-                {...register("password", {required: "password is required"})} 
-                type='password' 
-                label='Password' 
-                id='password' 
-                name='password' 
-            />
+        {arrayOfInputs.map((field:InputItem, index) => (
+          <TextField
+            key={index}
+            sx={{ marginBottom: '10px' }}
+            error={!!errors[field.name]}
+            helperText={errors[field.name]?.message as string}
+            {...register(field.name, field.validations.reduce((acc, val) => ({ ...acc, ...val }), {}))}
+            type={field.type}
+            label={field.label}
+            id={field.id}
+            name={field.name}
+          />
+          ))}
             
             <Button type='submit' sx={{marginTop:'20px', }} color='warning' variant='contained'>submit</Button>
         
         </Stack >
-
         <DevTool control={ control }/>
     </form>
   )

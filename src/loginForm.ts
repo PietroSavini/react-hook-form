@@ -11,7 +11,7 @@ type InputItem={
     validations: Validation[];
 }
 
-export const loginForm:Array<InputItem>= [
+const loginForm : InputItem[]= [
     {
         type:'text',
         label:'Username',
@@ -30,8 +30,10 @@ export const loginForm:Array<InputItem>= [
         id:'password',
         className:'',
         validations:[
-            {required:'passwordis required'}
+            {required:'password is required'}
         ]
     }
 
 ]
+
+export default loginForm;
