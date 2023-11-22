@@ -47,7 +47,7 @@ const loginForm : InputItem[]= [
                 required:'email è obbligatoria',
                 pattern:{
                     value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    message: 'deve contenere  una @ e un finale(.com/.it etc)'
+                    message: 'deve contenere una @ ed un fisso valido (.com/.it etc)'
                 }
             }
         ]
@@ -73,6 +73,7 @@ const loginForm : InputItem[]= [
             {required:true}
         ],
         options:[
+            { value: '', label:''},
             { value: 1, label:'Italia'},
             { value: 2, label:'Olanda' },
             { value: 3, label:'Germania' }

@@ -78,7 +78,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
                     />
                 );
 
-            }else if (field.type === 'select'){
+            }else if (field.type === 'select' && field.options){
                 return (
                     <TextField
                     key={index}
@@ -90,6 +90,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
                     label={field.label}
                     id={field.id}
                     name={field.name}
+                    defaultValue={field.options[0].value}
                     >
                         {field.options?.map((option, optionIndex) => (
                             <MenuItem key={optionIndex} value={option.value}>{option.label}</MenuItem>
