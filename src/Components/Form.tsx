@@ -1,9 +1,23 @@
-import { TextField, MenuItem, Button, Stack } from '@mui/material'
+import { TextField, Button, Stack } from '@mui/material'
 import { FieldErrors, useForm  } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools';
 import { useEffect } from 'react';
+import { loginForm } from '../loginForm';
 
-export const Form = () => {
+type Validation = {
+    [key:string]: string
+};
+
+type InputItem={
+    type: string;
+    label: string;
+    name: string;
+    id: string;
+    className: string;
+    validations: Validation[];
+}
+
+export const Form = (loginForm: InputItem[]) => {
 
     type data = {
         username: string;
@@ -41,6 +55,16 @@ export const Form = () => {
                 name='username' 
             />
             
+            <TextField 
+                sx={{marginBottom:'10px'}} 
+                error={!!errors.password} 
+                helperText={errors.password?.message} 
+                {...register("password", {required: "password is required"})} 
+                type='password' 
+                label='Password' 
+                id='password' 
+                name='password' 
+            />
             
             <Button type='submit' sx={{marginTop:'20px', }} color='warning' variant='contained'>submit</Button>
         
