@@ -3,7 +3,7 @@ type Validation = {
 };
 
 type InputItem={
-    type: string;
+    type: 'text' | 'password' | 'select' | 'radio' | 'checkbox' | 'textArea';
     label: string;
     name: string;
     id: string;
@@ -52,6 +52,17 @@ const loginForm : InputItem[]= [
         name:'password',
         id:'password',
         className:'',
+        validations:[
+            {required:true}
+        ]
+    },
+    {
+    
+        type:'select',
+        label:'seleziona',
+        name:'select',
+        id:'select',
+        className:'cicciopasticcio',
         validations:[
             {required:true}
         ]
