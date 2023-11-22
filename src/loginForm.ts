@@ -2,6 +2,11 @@ type Validation = {
     [key:string]: any
 };
 
+type Options = {
+    value : string | number,
+    label : string
+}
+
 type InputItem={
     type: 'text' | 'password' | 'select' | 'radio' | 'checkbox' | 'textArea';
     label: string;
@@ -9,6 +14,7 @@ type InputItem={
     id: string;
     className: string;
     validations: Validation[];
+    options?: Options[];
 }
 
 const loginForm : InputItem[]= [
@@ -59,12 +65,17 @@ const loginForm : InputItem[]= [
     {
     
         type:'select',
-        label:'seleziona',
-        name:'select',
-        id:'select',
+        label:'Seleziona paese',
+        name:'nation',
+        id:'nation',
         className:'cicciopasticcio',
         validations:[
             {required:true}
+        ],
+        options:[
+            { value: 1, label:'Italia'},
+            { value: 2, label:'Olanda' },
+            { value: 3, label:'Germania' }
         ]
     },
  
