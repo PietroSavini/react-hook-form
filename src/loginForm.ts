@@ -1,5 +1,5 @@
 type Validation = {
-    [key:string]: string
+    [key:string]: any
 };
 
 type InputItem={
@@ -19,9 +19,32 @@ const loginForm : InputItem[]= [
         id:'username',
         className:'',
         validations:[
-            {required:'username is required'},
+            {
+                required: 'username è obbligatorio',
+                minLength: {
+                    value:5,
+                    message: 'immetti un minimo di 5 caratteri'
+                },
+               
+            },
         ],
         
+    },
+    {
+        type:'text',
+        label:'Email',
+        name:'email',
+        id:'email',
+        className:'',
+        validations:[
+            {
+                required:'email è obbligatoria',
+                pattern:{
+                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: 'deve contenere  una @ e un finale(.com/.it etc)'
+                }
+            }
+        ]
     },
     {
         type:'password',
@@ -30,9 +53,10 @@ const loginForm : InputItem[]= [
         id:'password',
         className:'',
         validations:[
-            {required:'password is required'}
+            {required:true}
         ]
-    }
+    },
+ 
 
 ]
 

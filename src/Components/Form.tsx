@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 
 type Validation = {
-    [key:string]: string
+    [key:string]: any
 };
 type InputItem={
     type: string;
@@ -32,7 +32,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
     const arrayOfInputs = [...inputArr]
     const values = requestValues;
     const form = useForm<data>();
-    const { register, control, handleSubmit, formState, reset } = form;
+    const { register, control, handleSubmit, formState, reset, setError, setValue } = form;
     const { errors, isSubmitSuccessful } = formState;
 
     const onSubmit = (data: data) =>{
@@ -50,7 +50,8 @@ export const Form = ({inputArr, requestValues}:Props) => {
     //reset del form al completamento del submit
     useEffect(()=>{
         reset()
-    },[isSubmitSuccessful])
+    },[isSubmitSuccessful]);
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
@@ -63,7 +64,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
             sx={{ marginBottom: '10px' }}
             error={!!errors[field.name]}
             helperText={errors[field.name]?.message as string}
-            {...register(field.name, field.validations.reduce((acc, val) => ({ ...acc, ...val }), {}))}
+            {...register(field.name, field.validations.reduce((key, val) => ({ ...key, ...val }), {}))}
             type={field.type}
             label={field.label}
             id={field.id}
