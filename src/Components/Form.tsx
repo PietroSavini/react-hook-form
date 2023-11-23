@@ -68,7 +68,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
         <div>
 
         {arrayOfInputs.map((field:InputItem, index) => {
-            if(field.type === 'text' || 'password' || 'email'){
+            if(field.type === 'text' || field.type === 'password' || field.type === 'email'){
                 return (
                     <TextField
                         key={index}
@@ -90,31 +90,22 @@ export const Form = ({inputArr, requestValues}:Props) => {
             }else if (field.type === 'select' && field.options){
                 return (
                     <TextField
+                        select
                         key={index}
                         sx={{ marginBottom: '10px', width:210 }}
                         error={!!errors[field.name]}
                         helperText={errors[field.name]?.message as string}
                         {...register(field.name, field.validations.reduce((key, val) => ({ ...key, ...val }), {}))}
-                        select
                         label={field.label}
                         id={field.id}
                         name={field.name}
-                        defaultValue={field.options[0].value}
+                        defaultValue={''}
                         className={field.className}
-                        inputRef={(input) => {
-                            valueRef.current[index] = input
-                        }}
                     >
-                        {field.options.map((option, optionIndex) => (
+                        {field.options?.map((option, optionIndex) => (
                             <MenuItem key={optionIndex} value={option.value}>{option.label}</MenuItem>
                         ))}
                     </TextField>
-                );
-            }else if (field.type === 'checkbox'){
-                return(
-
-                    <div></div>
-
                 );
             }
         })}

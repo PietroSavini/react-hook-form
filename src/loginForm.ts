@@ -37,6 +37,19 @@ const loginForm : InputItem[] = [
         
     },
     {
+        type:'password',
+        label:'Password',
+        name:'password',
+        id:'password',
+        className:'',
+        validations:[
+            {
+                required:'email è obbligatoria',
+                
+            }
+        ]
+    },
+    {
         type:'email',
         label:'Email',
         name:'email',
@@ -53,29 +66,15 @@ const loginForm : InputItem[] = [
         ]
     },
     {
-        type:'password',
-        label:'Password',
-        name:'password',
-        id:'password',
-        className:'',
-        validations:[
-            {
-                required:'email è obbligatoria',
-                
-            }
-        ]
-    },
-    {
         type:'select',
         label:'Seleziona paese',
-        name:'nation',
-        id:'nation',
+        name:'nation-1',
+        id:'nation-1',
         className:'',
         validations:[
-           
+           {required:'questo campo è obbligatorio'}
         ],
         options:[
-            { value: '', label:''},
             { value: 1, label:'Italia'},
             { value: 2, label:'Olanda' },
             { value: 3, label:'Germania' }

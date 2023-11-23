@@ -12,7 +12,7 @@ type data = {
 }
 
 
-export const LoginForm = () => {
+export const StaticForm = () => {
 
    
     const form = useForm<data>();

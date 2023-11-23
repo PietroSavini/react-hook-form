@@ -1,6 +1,6 @@
 import './App.scss'
 import { Form } from './Components/Form'
-import {LoginForm} from './Components/LoginForm';
+import {StaticForm} from './Components/StaticForm';
 import loginForm from './loginForm';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <main>
         <h2>Form Generator</h2>
         <Form inputArr={loginForm} requestValues={{ url:'/api/Login', method: 'POST' }}  />
-        <LoginForm />
+        <StaticForm />
       </main>
     </>
   )
