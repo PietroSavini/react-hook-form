@@ -8,7 +8,7 @@ type Options = {
 }
 
 type InputItem={
-    type: 'text' | 'password' | 'select' | 'radio' | 'checkbox' | 'textArea';
+    type: 'text' | 'password' | 'email' |'select' | 'radio' | 'checkbox' | 'textArea';
     label: string;
     name: string;
     id: string;
@@ -37,7 +37,7 @@ const loginForm : InputItem[] = [
         
     },
     {
-        type:'text',
+        type:'email',
         label:'Email',
         name:'email',
         id:'email',
@@ -53,13 +53,26 @@ const loginForm : InputItem[] = [
         ]
     },
     {
+        type:'password',
+        label:'Password',
+        name:'password',
+        id:'password',
+        className:'',
+        validations:[
+            {
+                required:'email è obbligatoria',
+                
+            }
+        ]
+    },
+    {
         type:'select',
         label:'Seleziona paese',
         name:'nation',
         id:'nation',
         className:'',
         validations:[
-            {required: ' seleziona un paese'}
+           
         ],
         options:[
             { value: '', label:''},

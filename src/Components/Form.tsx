@@ -38,8 +38,8 @@ export const Form = ({inputArr, requestValues}:Props) => {
     const arrayOfInputs = [...inputArr]
     const values = requestValues;
     const form = useForm<data>();
-    const { register, control, handleSubmit, formState, reset } = form;
-    const { errors, isSubmitSuccessful } = formState;
+    const { register, control, handleSubmit, formState} = form;
+    const { errors} = formState;
     const valueRef = useRef<ValueRefType>([])
     const onSubmit = (data: data) =>{
 
@@ -68,7 +68,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
         <div>
 
         {arrayOfInputs.map((field:InputItem, index) => {
-            if(field.type === 'text'){
+            if(field.type === 'text' || 'password' || 'email'){
                 return (
                     <TextField
                         key={index}
@@ -105,7 +105,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
                             valueRef.current[index] = input
                         }}
                     >
-                        {field.options?.map((option, optionIndex) => (
+                        {field.options.map((option, optionIndex) => (
                             <MenuItem key={optionIndex} value={option.value}>{option.label}</MenuItem>
                         ))}
                     </TextField>
