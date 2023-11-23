@@ -71,6 +71,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
             if(field.type === 'text' || field.type === 'password' || field.type === 'email'){
                 return (
                     <TextField
+                        inputProps={{'serialize':''}}
                         key={index}
                         sx={{ marginBottom: '10px' }}
                         error={!!errors[field.name]}
