@@ -6,8 +6,18 @@
 }
 
 form{
-  display: flex;
-  justify-content: center;
+  margin-bottom: 2rem;
+  border: 1px solid black;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 1rem 0rem;
+  &>div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+  }
   .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
     .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
       color: #fff;

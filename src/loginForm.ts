@@ -17,7 +17,8 @@ type InputItem={
     options?: Options[];
 }
 
-const loginForm : InputItem[]= [
+const loginForm : InputItem[] = [
+    
     {
         type:'text',
         label:'Username',
@@ -29,9 +30,8 @@ const loginForm : InputItem[]= [
                 required: 'username è obbligatorio',
                 minLength: {
                     value:5,
-                    message: 'immetti un minimo di 5 caratteri'
+                    message: 'minimo 5 caratteri'
                 },
-               
             },
         ],
         
@@ -47,30 +47,19 @@ const loginForm : InputItem[]= [
                 required:'email è obbligatoria',
                 pattern:{
                     value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    message: 'deve contenere una @ ed un fisso valido (.com/.it etc)'
+                    message: 'digitare un email valida'
                 }
             }
         ]
     },
     {
-        type:'password',
-        label:'Password',
-        name:'password',
-        id:'password',
-        className:'',
-        validations:[
-            {required:true}
-        ]
-    },
-    {
-    
         type:'select',
         label:'Seleziona paese',
         name:'nation',
         id:'nation',
-        className:'cicciopasticcio',
+        className:'',
         validations:[
-            {required:true}
+            {required: ' seleziona un paese'}
         ],
         options:[
             { value: '', label:''},
@@ -79,8 +68,7 @@ const loginForm : InputItem[]= [
             { value: 3, label:'Germania' }
         ]
     },
- 
-
+  
 ]
 
 export default loginForm;
