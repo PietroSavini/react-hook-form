@@ -53,7 +53,8 @@ export const Form1 = (props: props) => {
                 />
                 {/* /password */}
 
-                <input type="checkbox" name="" id="" onChange={(e)=> setCheckboxValue(e.target.value)} />
+                <input type="checkbox" name="clickme" id="clickme"onChange={(e)=> setCheckboxValue(e.target.value)} />
+                <label htmlFor="clickme">(opzione che sblocca altro form)</label>
         </div>
     </>
   )
