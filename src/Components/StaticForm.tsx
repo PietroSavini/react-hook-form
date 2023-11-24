@@ -18,21 +18,14 @@ export const StaticForm = () => {
     const { register, handleSubmit, formState } = form;
     const { errors} = formState;
 
-
-
     const onSubmit = (data: data) =>{
-        console.log(data)
-        
+        console.log(data);
     }
     
-
     const onError = (errors: FieldErrors<data>) => {
-        console.log("errori: ",errors)
-
+        console.log("errori: ",errors);
     }
 
-
-    
     //reset del form al completamento del submit
     // useEffect(()=>{
     //     reset()
