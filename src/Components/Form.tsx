@@ -65,6 +65,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+        <h2>Form Generato</h2>
         <div>
 
         {arrayOfInputs.map((field:InputItem, index) => {

@@ -22,9 +22,8 @@ export const StaticForm = () => {
 
 
     const onSubmit = (data: data) =>{
-
         console.log(data)
-     
+        
     }
 
 
@@ -41,6 +40,7 @@ export const StaticForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+        <h2>Form statico</h2>
         <div>
             {/* username */}
             <TextField
@@ -109,7 +109,7 @@ export const StaticForm = () => {
         </div>
             
         <Button type='submit' sx={{marginTop:'20px', }} color='warning' variant='contained'>submit</Button>
-        <DevTool control={ control }/>
+    
     </form>
   )
 }

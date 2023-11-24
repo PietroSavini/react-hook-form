@@ -22,7 +22,7 @@ const loginForm : InputItem[] = [
     {
         type:'text',
         label:'Username',
-        name:'username',
+        name:'user',
         id:'username',
         className:'',
         validations:[
@@ -39,7 +39,7 @@ const loginForm : InputItem[] = [
     {
         type:'password',
         label:'Password',
-        name:'password',
+        name:'psw',
         id:'password',
         className:'',
         validations:[
@@ -49,6 +49,7 @@ const loginForm : InputItem[] = [
             }
         ]
     },
+    
     {
         type:'email',
         label:'Email',
