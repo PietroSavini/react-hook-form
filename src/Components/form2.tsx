@@ -22,7 +22,7 @@ export const Form2 = (props: props) => {
 
   return (
     <>
-        <div className='form'>
+        <div className='form-2'>
           <h3>content 2</h3>
           <TextField
                   sx={{ marginBottom: '10px' }}

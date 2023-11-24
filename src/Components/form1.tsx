@@ -1,29 +1,23 @@
 import { TextField } from '@mui/material';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
-
-
 type props = {
-    registerFn : any
-    errorsArr : any
-    checkboxFn : any
+    registerFn : any;
+    errorsArr : any;
+    checkboxFn : any;
 }
-
 export const Form1 = (props: props) => {
 
     type data ={
         username:string,
         password:string,
-    }
+    };
     
-    const { registerFn, checkboxFn, errorsArr  } = props
-
-
-    const register = registerFn as UseFormRegister<data> 
-    const errors = errorsArr as FieldErrors<data>
-    const setCheckboxValue = checkboxFn as React.Dispatch<React.SetStateAction<string>>
+    const { registerFn, checkboxFn, errorsArr  } = props;
+    const register = registerFn as UseFormRegister<data>;
+    const errors = errorsArr as FieldErrors<data>;
+    const setCheckboxValue = checkboxFn as React.Dispatch<React.SetStateAction<string>>;
     
-
   return (
     <>
         <div className='form'>
@@ -57,6 +51,5 @@ export const Form1 = (props: props) => {
                 <label htmlFor="clickme">(opzione che sblocca altro form)</label>
         </div>
     </>
-  )
-
-}
+  );
+};

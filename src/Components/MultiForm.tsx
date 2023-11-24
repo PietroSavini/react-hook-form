@@ -1,21 +1,25 @@
+import { useRef, useState } from 'react';
 import { Button } from '@mui/material'
 import { FieldErrors, useForm  } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools';
 import { Form1} from './form1';
 import { Form2 } from './form2';
-import { useState } from 'react';
+
+
+
 
 
 export const MultiForm = () => {
-
+   
     const form = useForm<any>();
     const { register, handleSubmit, control, formState } = form;
     const { errors } = formState;
     const [checkboxValue, setCheckboxValue] = useState()
+    const ref = useRef<HTMLFormElement>(null)
+
 
     const onSubmit = (data: any) =>{
         console.log(data)
-        
     }
 
     const onError = (errors: FieldErrors<any>) => {
@@ -25,9 +29,8 @@ export const MultiForm = () => {
       
   return (
 
-    <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+    <form onSubmit={handleSubmit(onSubmit, onError)} ref={ref} noValidate>
         <h2>Multiform</h2>
-
         <Form1 registerFn={register} errorsArr={errors} checkboxFn={setCheckboxValue}/>
         {checkboxValue === 'on' && 
         <Form2 registerFn={register} errorsArr={errors} />}
