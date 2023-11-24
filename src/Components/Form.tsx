@@ -114,7 +114,7 @@ export const Form = ({inputArr, requestValues}:Props) => {
         </div>
             
         <Button type='submit' sx={{marginTop:'20px', }} color='warning' variant='contained'>submit</Button>
-        <DevTool control={ control }/>
+        
     </form>
   )
 }

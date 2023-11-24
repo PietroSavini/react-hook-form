@@ -11,12 +11,11 @@ type data = {
     nation: string | number;
 }
 
-
 export const StaticForm = () => {
 
    
     const form = useForm<data>();
-    const { register, control, handleSubmit, formState } = form;
+    const { register, handleSubmit, formState } = form;
     const { errors} = formState;
 
 
@@ -25,13 +24,15 @@ export const StaticForm = () => {
         console.log(data)
         
     }
-
+    
 
     const onError = (errors: FieldErrors<data>) => {
         console.log("errori: ",errors)
 
     }
 
+
+    
     //reset del form al completamento del submit
     // useEffect(()=>{
     //     reset()
@@ -47,7 +48,7 @@ export const StaticForm = () => {
                 sx={{ marginBottom: '10px' }}
                 error={!!errors.username}
                 helperText={errors.username?.message as string}
-                {...register('username', {required:'username è obbligatorio',minLength:{value:5,message:'minimo 5 caratteri'}})}
+                {...register('username')}
                 type='text'
                 label='Username'
                 id='user'
@@ -73,7 +74,10 @@ export const StaticForm = () => {
                 sx={{ marginBottom: '10px' }}
                 error={!!errors.email}
                 helperText={errors.email?.message as string}
-                {...register('email', {required:'email è obbligatorio', })}
+                {...register('email', {required:'email è obbligatorio', pattern:{
+                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: 'digitare un email valida'
+                }  })}
                 type='email'
                 label='Email'
                 id='email2'
@@ -87,10 +91,7 @@ export const StaticForm = () => {
                 sx={{ marginBottom: '10px', width:210 }}
                 error={!!errors.nation}
                 helperText={errors.nation?.message as string}
-                {...register('nation', {required:'nation è obbligatorio', pattern:{
-                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    message: 'digitare un email valida'
-                } })}
+                {...register('nation', {required:'nation è obbligatorio', })}
                 label='Seleziona paese'
                 id='nation'
                 name='nation'
@@ -102,14 +103,10 @@ export const StaticForm = () => {
 
             </TextField>
             {/* /nation */}
-
-
-
-         
         </div>
             
         <Button type='submit' sx={{marginTop:'20px', }} color='warning' variant='contained'>submit</Button>
-    
+
     </form>
   )
 }
